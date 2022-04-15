@@ -1,7 +1,5 @@
 # Iris Recognition
 
-This is based on the work by [Thuy Ng](https://www.github.com/thuyngch). His original Iris Recognition System implemented in both MatLab and Python can be found [here](https://github.com/thuyngch/Iris-Recognition).
-
 ## Description
 
 This system is incomplete for a real-world application. A complete system must have a specific camera to capture the iris of the eye. However, these cameras are very expensive. Therefore available image databases [CASIA-IrisV1](http://biometrics.idealtest.org/dbDetailForUser.do?id=1) and [MMU2](http://andyzeng.github.io/downloads/MMU2IrisDatabase.zip) are used to replace the costly cameras. All testing and machine learning classification are carried out using images in these databases.
@@ -16,20 +14,20 @@ These system utilizes all CPU cores to boost computation time.
 
 ## Set Up
 
-These system was deployed and executed on an Ubuntu 20.04 OS and the Python interpreter is Python 3.8.5.
+These system was deployed and executed on Mac M1 OS and the Python interpreter is Python 3.9.7
 
 First, create a virtual environment
 
 ```bash
-python3 -m venv iris_venv 
-source iris_venv/bin/activate
+conda create -n iris_vnev python=3.8.4
+conda activate iris_vnev
 ```
 
 Clone this repository
 
 ```bash
-git clone https://github.com/Th3nn3ss/python-iris-recognition.git
-cd python-iris-recognition
+git clone <repo-name> <dir-name>
+cd <dir-name>
 ```
 
 Install requirements
@@ -85,13 +83,9 @@ pip install -r requirements.txt
 
    -  File <code>eval-casia1.py</code> is used to execute a Machine Learning Classification Algorithm that determines the Maximum fscore, Best eye_threshold and Best threshold for the CASIA1 Database. This process does not have to be repeated but you can re-run to check the following results, 
 
-      ![CASIA1-optimal.png](./sample_images/casia1_eval.png)
-
       
 
       File <code>eval-mmu2.py</code> is used to execute a Machine Learning Classification Algorithm that determines the Optimal Maximum fscore, Best eye_threshold and Best threshold for the images in the MMU2 Database. This process does not have to be repeated but you can re-run to check the following results.
-
-      ![mmu2-optimal](./sample_images/mmu2_eval.png)
 
       
 
@@ -107,8 +101,6 @@ python enroll-casia1.py
 
 In the above example, we are enrolling the CASIA1 Database into the system. This encodes the specially selected images using regex and the outputs are stored in a templates database sub-folder, in the case of this example a CASIA1 sub-folder.
 
-![python enroll-casia1.py](./sample_images/enroll.png)
-
 ### To verify an image
 
 ```bash
@@ -121,16 +113,9 @@ Provided all images in the CASIA1 Database have been enrolled to the templates d
 
 The default threshold used for matching is 0.38.
 
-The outcome of the above code looks like this,
-
-![python verify.py](./sample_images/verify.png)
-
-The image above shows that the image file 003_1_1.jpg matches 2 samples. 
-
-
 
 ## License
 
 [MIT](./LICENSE)
 
-![Alt](https://repobeats.axiom.co/api/embed/71a5bb54a13aabbd27cb3f48248ecbfee8f411c0.svg "Repobeats analytics image")
+![Alt](https://repobeats.axiom.co/api/embed/2ce46479ce43a6e52205bd809df4c6409f217e2a.svg "Repobeats analytics image")
