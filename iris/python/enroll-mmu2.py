@@ -42,27 +42,31 @@ def pool_func(file):
 # -----------------------------------------------------------------------------
 # Execution
 # -----------------------------------------------------------------------------
-start = time()
+def main():
+    start = time()
 
-# Check the existence of temp_dir
-if not os.path.exists(args.temp_dir):
-    print("makedirs", args.temp_dir)
-    os.makedirs(args.temp_dir)
+    # Check the existence of temp_dir
+    if not os.path.exists(args.temp_dir):
+        print("makedirs", args.temp_dir)
+        os.makedirs(args.temp_dir)
 
-# Get list of files for enrolling template.
-# Just "*010*.jpg" files are selected.
-# In addition, 50th samples are not used.
-files = glob(os.path.join(args.data_dir, "**/*/*010*.bmp"), recursive=True)
-files = [file for file in files if "01020" not in file]
-files = [file for file in files if "5002" not in file]
-n_files = len(files)
-print("Number of files for enrolling:", n_files)
+    # Get list of files for enrolling template.
+    # Just "*010*.jpg" files are selected.
+    # In addition, 50th samples are not used.
+    files = glob(os.path.join(args.data_dir, "**/*/*010*.bmp"), recursive=True)
+    files = [file for file in files if "01020" not in file]
+    files = [file for file in files if "5002" not in file]
+    n_files = len(files)
+    print("Number of files for enrolling:", n_files)
 
-# Parallel pools to enroll templates
-print("Start enrolling...")
-pools = Pool(processes=args.n_cores)
-for _ in tqdm(pools.imap_unordered(pool_func, files), total=n_files):
-    pass
+    # Parallel pools to enroll templates
+    print("Start enrolling...")
+    pools = Pool(processes=args.n_cores)
+    for _ in tqdm(pools.imap_unordered(pool_func, files), total=n_files):
+        pass
 
-end = time()
-print('\n>>> Enrollment time: {} [s]\n'.format(end-start))
+    end = time()
+    print('\n>>> Enrollment time: {} [s]\n'.format(end-start))
+
+if __name__ == "__main__":
+    main()
