@@ -6,6 +6,8 @@ This system is incomplete for a real-world application. A complete system must h
 
 Typically, a recognition system involves two operation modes, namely Enrollment and Verification.
 
+<!-- ![Working](./Working.jpeg) -->
+
 **Enrollment** is extracting features from an eye image and saving it into a template database.
 
 **Verification** allows users extract their features and match with existing entities in the template database to identify the origination of the input image.
